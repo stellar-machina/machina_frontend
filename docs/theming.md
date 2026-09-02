@@ -7,7 +7,7 @@ This document explains how theme selection flows through the app **without break
 The user’s theme preference is persisted in `localStorage` under:
 
 - **Storage key:** `THEME_STORAGE_KEY`
-- **Value:** `"agentpay.theme"`
+- **Value:** `"machina.theme"`
 
 Defined in:
 - `src/lib/theme.ts`
@@ -152,7 +152,7 @@ To add a new color/style token without breaking either mode:
 
 This document matches the current implementation:
 
-- Storage key: `THEME_STORAGE_KEY = "agentpay.theme"` (`src/lib/theme.ts`)
+- Storage key: `THEME_STORAGE_KEY = "machina.theme"` (`src/lib/theme.ts`)
 - Pre-paint script reads the embedded `THEME_STORAGE_KEY` and toggles `html.dark`/`html.light` (`src/app/layout.tsx`).
 - CSS overrides are implemented by `html.dark` / `html.light` plus an OS fallback media query (`src/app/globals.css`).
 - Reduced motion is handled with `@media (prefers-reduced-motion: no-preference)` wrapping theme transitions.

@@ -44,7 +44,7 @@ export default function DocsPage() {
 
   const openApiLink = safeHref("/api/v1/openapi.json");
   const referenceLink = safeHref(
-    "https://github.com/Agentpay-Org/Agentpay-frontend/blob/main/docs/api-integration.md",
+    "https://github.com/stellar-machina/machina_frontend/blob/main/docs/api-integration.md",
   );
 
   return (

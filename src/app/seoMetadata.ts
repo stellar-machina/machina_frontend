@@ -10,7 +10,7 @@ export const operatorOnlyRoutes = [
 const DEFAULT_SITE_ORIGIN = "http://localhost:3000";
 
 export function resolveSiteOrigin(env = process.env): string {
-  const rawOrigin = env.NEXT_PUBLIC_AGENTPAY_SITE_ORIGIN?.trim() || DEFAULT_SITE_ORIGIN;
+  const rawOrigin = env.NEXT_PUBLIC_MACHINA_SITE_ORIGIN?.trim() || DEFAULT_SITE_ORIGIN;
   return rawOrigin.replace(/\/+$/, "");
 }
 

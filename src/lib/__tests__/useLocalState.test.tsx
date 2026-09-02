@@ -34,7 +34,7 @@ describe("useLocalState", () => {
   });
 
   it("reads the persisted value from localStorage on mount", async () => {
-    const storageKey = "agentpay.useLocalState.persisted";
+    const storageKey = "machina.useLocalState.persisted";
     window.localStorage.setItem(storageKey, JSON.stringify("persisted"));
 
     render(<Probe storageKey={storageKey} initial="fallback" />);
@@ -45,7 +45,7 @@ describe("useLocalState", () => {
   });
 
   it("writes the next value to state and localStorage", () => {
-    const storageKey = "agentpay.useLocalState.write";
+    const storageKey = "machina.useLocalState.write";
 
     const { getByRole } = render(
       <Probe storageKey={storageKey} initial="fallback" next="saved value" />
@@ -60,7 +60,7 @@ describe("useLocalState", () => {
   });
 
   it("keeps the fallback when localStorage has no value for the key", async () => {
-    const storageKey = "agentpay.useLocalState.missing";
+    const storageKey = "machina.useLocalState.missing";
 
     render(<Probe storageKey={storageKey} initial="fallback" />);
 
@@ -70,7 +70,7 @@ describe("useLocalState", () => {
   });
 
   it("keeps the fallback when localStorage contains invalid JSON", async () => {
-    const storageKey = "agentpay.useLocalState.invalid";
+    const storageKey = "machina.useLocalState.invalid";
     window.localStorage.setItem(storageKey, "{not-json");
 
     render(<Probe storageKey={storageKey} initial="fallback" />);
@@ -81,7 +81,7 @@ describe("useLocalState", () => {
   });
 
   it("updates React state even when localStorage.setItem throws", () => {
-    const storageKey = "agentpay.useLocalState.quota";
+    const storageKey = "machina.useLocalState.quota";
     const setItemSpy = jest
       .spyOn(Storage.prototype, "setItem")
       .mockImplementation(() => {

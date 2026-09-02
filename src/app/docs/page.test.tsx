@@ -19,7 +19,7 @@ afterEach(() => {
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   cleanup();
-  delete process.env.NEXT_PUBLIC_AGENTPAY_API_BASE;
+  delete process.env.NEXT_PUBLIC_MACHINA_API_BASE;
 });
 
 describe("DocsPage", () => {
@@ -81,12 +81,12 @@ describe("DocsPage", () => {
     });
   });
 
-  it("uses a custom API base URL when NEXT_PUBLIC_AGENTPAY_API_BASE is set", () => {
-    process.env.NEXT_PUBLIC_AGENTPAY_API_BASE = "https://api.agentpay.io";
+  it("uses a custom API base URL when NEXT_PUBLIC_MACHINA_API_BASE is set", () => {
+    process.env.NEXT_PUBLIC_MACHINA_API_BASE = "https://api.example.com";
     render(<DocsPage />);
     const codes = document.querySelectorAll("pre code");
     codes.forEach((code) => {
-      expect(code!.textContent).toContain("https://api.agentpay.io");
+      expect(code!.textContent).toContain("https://api.example.com");
     });
   });
 
@@ -207,7 +207,7 @@ describe("DocsPage", () => {
     });
     expect(link).toHaveAttribute(
       "href",
-      "https://github.com/Agentpay-Org/Agentpay-frontend/blob/main/docs/api-integration.md",
+      "https://github.com/stellar-machina/machina_frontend/blob/main/docs/api-integration.md",
     );
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
@@ -248,7 +248,7 @@ describe("DocsPage", () => {
       safeHrefSpy.mockImplementation((href) => {
         if (
           href ===
-          "https://github.com/Agentpay-Org/Agentpay-frontend/blob/main/docs/api-integration.md"
+          "https://github.com/stellar-machina/machina_frontend/blob/main/docs/api-integration.md"
         ) {
           return { ok: false };
         }

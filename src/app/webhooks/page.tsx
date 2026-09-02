@@ -77,7 +77,7 @@ export default function WebhooksPage() {
             type="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://example.com/agentpay-hook"
+            placeholder="https://example.com/machina-hook"
             className="rounded-md border border-zinc-300 px-3 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>

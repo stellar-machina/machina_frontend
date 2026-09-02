@@ -2,7 +2,7 @@
 // served by every route in the dashboard.
 //
 // Designed to be consumed by `next.config.ts`'s `headers()` callback at
-// build time. `apiBase` is read from `NEXT_PUBLIC_AGENTPAY_API_BASE` so
+// build time. `apiBase` is read from `NEXT_PUBLIC_MACHINA_API_BASE` so
 // `connect-src` always lines up with the backend the client actually fetches.
 
 import { DEFAULT_API_BASE } from "./resolveApiBase";

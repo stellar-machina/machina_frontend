@@ -127,7 +127,7 @@ it("registers a webhook with trimmed events and reloads the list", async () => {
 
   render(<WebhooksPage />);
 
-  fireEvent.change(screen.getByPlaceholderText("https://example.com/agentpay-hook"), {
+  fireEvent.change(screen.getByPlaceholderText("https://example.com/machina-hook"), {
     target: { value: "https://example.com/new" },
   });
   fireEvent.change(screen.getByDisplayValue("usage.recorded,usage.settled"), {
@@ -153,7 +153,7 @@ it("shows create errors without dropping the existing row", async () => {
 
   render(<WebhooksPage />);
   await screen.findByText("https://example.com/hook");
-  fireEvent.change(screen.getByPlaceholderText("https://example.com/agentpay-hook"), {
+  fireEvent.change(screen.getByPlaceholderText("https://example.com/machina-hook"), {
     target: { value: "https://example.com/new" },
   });
   fireEvent.click(screen.getByRole("button", { name: /register/i }));
