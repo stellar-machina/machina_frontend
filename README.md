@@ -100,12 +100,11 @@ build time:
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_AGENTPAY_API_BASE` | Base URL of the Stellar Machina backend API |
-| `NEXT_PUBLIC_AGENTPAY_SITE_ORIGIN` | Public origin of this dashboard (used for links/metadata) |
+| `NEXT_PUBLIC_MACHINA_API_BASE` | Base URL of the Stellar Machina backend API |
+| `NEXT_PUBLIC_MACHINA_SITE_ORIGIN` | Public origin of this dashboard (used for links/metadata) |
 
-> These keys still carry the original `AGENTPAY_` prefix. A rename to a
-> `MACHINA_` prefix is planned but intentionally deferred, since it has to be
-> coordinated with every deployment environment at once.
+Both are optional: with neither set, the dashboard builds and runs against a
+local default, which is handy for a UI-only preview without a backend.
 
 ---
 

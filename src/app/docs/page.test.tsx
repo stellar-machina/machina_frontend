@@ -19,7 +19,7 @@ afterEach(() => {
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   cleanup();
-  delete process.env.NEXT_PUBLIC_AGENTPAY_API_BASE;
+  delete process.env.NEXT_PUBLIC_MACHINA_API_BASE;
 });
 
 describe("DocsPage", () => {
@@ -81,8 +81,8 @@ describe("DocsPage", () => {
     });
   });
 
-  it("uses a custom API base URL when NEXT_PUBLIC_AGENTPAY_API_BASE is set", () => {
-    process.env.NEXT_PUBLIC_AGENTPAY_API_BASE = "https://api.agentpay.io";
+  it("uses a custom API base URL when NEXT_PUBLIC_MACHINA_API_BASE is set", () => {
+    process.env.NEXT_PUBLIC_MACHINA_API_BASE = "https://api.agentpay.io";
     render(<DocsPage />);
     const codes = document.querySelectorAll("pre code");
     codes.forEach((code) => {

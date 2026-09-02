@@ -1,6 +1,6 @@
 jest.mock("../resolveApiBase", () => ({
   resolveApiBase: jest.fn(() => {
-    const raw = process.env.NEXT_PUBLIC_AGENTPAY_API_BASE?.trim();
+    const raw = process.env.NEXT_PUBLIC_MACHINA_API_BASE?.trim();
     const base = raw && raw.length > 0 ? raw : "http://localhost:3001";
     return base.replace(/\/+$/, "");
   }),
@@ -16,32 +16,32 @@ import {
 type ApiClientModule = typeof import("../apiClient");
 
 async function loadApiClient(
-  env: { NEXT_PUBLIC_AGENTPAY_API_BASE?: string } = {},
+  env: { NEXT_PUBLIC_MACHINA_API_BASE?: string } = {},
 ): Promise<ApiClientModule> {
   jest.resetModules();
 
   const mutableEnv = process.env as NodeJS.ProcessEnv & {
     NODE_ENV?: string;
-    NEXT_PUBLIC_AGENTPAY_API_BASE?: string;
+    NEXT_PUBLIC_MACHINA_API_BASE?: string;
   };
   const envBag = mutableEnv as Record<string, string | undefined>;
-  const previousBase = mutableEnv.NEXT_PUBLIC_AGENTPAY_API_BASE;
+  const previousBase = mutableEnv.NEXT_PUBLIC_MACHINA_API_BASE;
   const previousNodeEnv = mutableEnv.NODE_ENV;
 
   try {
-    if (env.NEXT_PUBLIC_AGENTPAY_API_BASE === undefined) {
-      delete envBag.NEXT_PUBLIC_AGENTPAY_API_BASE;
+    if (env.NEXT_PUBLIC_MACHINA_API_BASE === undefined) {
+      delete envBag.NEXT_PUBLIC_MACHINA_API_BASE;
     } else {
-      envBag.NEXT_PUBLIC_AGENTPAY_API_BASE = env.NEXT_PUBLIC_AGENTPAY_API_BASE;
+      envBag.NEXT_PUBLIC_MACHINA_API_BASE = env.NEXT_PUBLIC_MACHINA_API_BASE;
     }
     envBag.NODE_ENV = "test";
 
     return (await import("../apiClient")) as ApiClientModule;
   } finally {
     if (previousBase === undefined) {
-      delete envBag.NEXT_PUBLIC_AGENTPAY_API_BASE;
+      delete envBag.NEXT_PUBLIC_MACHINA_API_BASE;
     } else {
-      envBag.NEXT_PUBLIC_AGENTPAY_API_BASE = previousBase;
+      envBag.NEXT_PUBLIC_MACHINA_API_BASE = previousBase;
     }
     if (previousNodeEnv === undefined) {
       delete envBag.NODE_ENV;
@@ -85,7 +85,7 @@ describe("apiClient", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("honours NEXT_PUBLIC_AGENTPAY_API_BASE instead of the localhost default", async () => {
+  it("honours NEXT_PUBLIC_MACHINA_API_BASE instead of the localhost default", async () => {
     const fetchMock = jest.fn(async (url) => {
       expect(url).toBe("https://api.example.com/v1/health");
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -93,7 +93,7 @@ describe("apiClient", () => {
     globalThis.fetch = fetchMock as unknown as typeof globalThis.fetch;
 
     const { apiGet } = await loadApiClient({
-      NEXT_PUBLIC_AGENTPAY_API_BASE: "https://api.example.com/v1/",
+      NEXT_PUBLIC_MACHINA_API_BASE: "https://api.example.com/v1/",
     });
     await expect(apiGet<{ ok: boolean }>("/health")).resolves.toEqual({
       ok: true,
@@ -184,7 +184,7 @@ describe("apiClient", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("honours NEXT_PUBLIC_AGENTPAY_API_BASE instead of the localhost default", async () => {
+  it("honours NEXT_PUBLIC_MACHINA_API_BASE instead of the localhost default", async () => {
     const fetchMock = jest.fn(async (url) => {
       expect(url).toBe("https://api.example.com/v1/health");
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -192,7 +192,7 @@ describe("apiClient", () => {
     globalThis.fetch = fetchMock as unknown as typeof globalThis.fetch;
 
     const { apiGet } = await loadApiClient({
-      NEXT_PUBLIC_AGENTPAY_API_BASE: "https://api.example.com/v1/",
+      NEXT_PUBLIC_MACHINA_API_BASE: "https://api.example.com/v1/",
     });
     await expect(apiGet<{ ok: boolean }>("/health")).resolves.toEqual({
       ok: true,

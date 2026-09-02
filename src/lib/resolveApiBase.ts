@@ -1,4 +1,4 @@
-// Validates and normalizes the NEXT_PUBLIC_AGENTPAY_API_BASE env var so
+// Validates and normalizes the NEXT_PUBLIC_MACHINA_API_BASE env var so
 // downstream code can safely concatenate a path onto the result.
 //
 // Behaviour:
@@ -11,8 +11,8 @@
 //     case so contributors can run the app against a local backend.
 
 export const DEFAULT_API_BASE = "http://localhost:3001";
-export const NEXT_PUBLIC_AGENTPAY_API_BASE_ENV =
-  "NEXT_PUBLIC_AGENTPAY_API_BASE";
+export const NEXT_PUBLIC_MACHINA_API_BASE_ENV =
+  "NEXT_PUBLIC_MACHINA_API_BASE";
 
 export type ResolveApiBaseOptions = {
   /**
@@ -40,7 +40,7 @@ export function resolveApiBase(opts: ResolveApiBaseOptions = {}): string {
   const isProduction =
     opts.isProduction ?? env.NODE_ENV === "production";
 
-  const raw = env[NEXT_PUBLIC_AGENTPAY_API_BASE_ENV]?.trim();
+  const raw = env[NEXT_PUBLIC_MACHINA_API_BASE_ENV]?.trim();
   const candidate = raw && raw.length > 0 ? raw : DEFAULT_API_BASE;
 
   let url: URL;
@@ -48,7 +48,7 @@ export function resolveApiBase(opts: ResolveApiBaseOptions = {}): string {
     url = new URL(candidate);
   } catch {
     throw new Error(
-      `Invalid NEXT_PUBLIC_AGENTPAY_API_BASE: ${JSON.stringify(candidate)}. ` +
+      `Invalid NEXT_PUBLIC_MACHINA_API_BASE: ${JSON.stringify(candidate)}. ` +
         "Expected an absolute URL such as https://api.example.com or http://localhost:3001."
     );
   }
@@ -56,20 +56,20 @@ export function resolveApiBase(opts: ResolveApiBaseOptions = {}): string {
   if (url.protocol !== "https:" && url.protocol !== "http:") {
     throw new Error(
       `Unsupported protocol ${JSON.stringify(url.protocol)} in ` +
-        "NEXT_PUBLIC_AGENTPAY_API_BASE. Use https (or http for localhost)."
+        "NEXT_PUBLIC_MACHINA_API_BASE. Use https (or http for localhost)."
     );
   }
 
   if (isProduction && url.protocol === "http:" && !isLocalHost(url.hostname)) {
     throw new Error(
-      "Refusing to use a non-https NEXT_PUBLIC_AGENTPAY_API_BASE in production. " +
+      "Refusing to use a non-https NEXT_PUBLIC_MACHINA_API_BASE in production. " +
         "Set https://... (localhost / 127.0.0.1 are still allowed)."
     );
   }
 
   if (url.protocol === "http:" && !isLocalHost(url.hostname)) {
     warn(
-      "NEXT_PUBLIC_AGENTPAY_API_BASE uses http on a non-localhost host. " +
+      "NEXT_PUBLIC_MACHINA_API_BASE uses http on a non-localhost host. " +
         "Use https in production to keep credentials and traffic private."
     );
   }
