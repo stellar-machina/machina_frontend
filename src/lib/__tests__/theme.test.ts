@@ -28,8 +28,8 @@ describe("THEME_STORAGE_KEY", () => {
     expect(THEME_STORAGE_KEY.length).toBeGreaterThan(0);
   });
 
-  it('equals \"agentpay.theme\" (no key drift between script and helpers)', () => {
-    expect(THEME_STORAGE_KEY).toBe("agentpay.theme");
+  it('equals \"machina.theme\" (no key drift between script and helpers)', () => {
+    expect(THEME_STORAGE_KEY).toBe("machina.theme");
   });
 });
 
@@ -181,6 +181,6 @@ describe("pre-paint script logic (mirrored in layout.tsx)", () => {
     // The key embedded in prePaintScript is a template-literal interpolation of
     // THEME_STORAGE_KEY at build time. Asserting the exported value protects
     // against key drift if the constant is ever renamed.
-    expect(THEME_STORAGE_KEY).toBe("agentpay.theme");
+    expect(THEME_STORAGE_KEY).toBe("machina.theme");
   });
 });

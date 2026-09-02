@@ -26,7 +26,7 @@ describe("ThemeToggle", () => {
   });
 
   it("renders all theme options and marks the stored theme as active", async () => {
-    window.localStorage.setItem("agentpay.theme", "dark");
+    window.localStorage.setItem("machina.theme", "dark");
 
     render(<ThemeToggle />);
 
@@ -38,13 +38,13 @@ describe("ThemeToggle", () => {
   });
 
   it("persists light mode and removes the dark class", async () => {
-    window.localStorage.setItem("agentpay.theme", "dark");
+    window.localStorage.setItem("machina.theme", "dark");
     render(<ThemeToggle />);
     await screen.findByRole("button", { name: "dark", pressed: true });
 
     fireEvent.click(screen.getByRole("button", { name: "light" }));
 
-    expect(window.localStorage.getItem("agentpay.theme")).toBe("light");
+    expect(window.localStorage.getItem("machina.theme")).toBe("light");
     expect(screen.getByRole("button", { name: "light" })).toHaveAttribute("aria-pressed", "true");
     expect(document.documentElement).not.toHaveClass("dark");
   });
@@ -55,7 +55,7 @@ describe("ThemeToggle", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "system" }));
 
-    expect(window.localStorage.getItem("agentpay.theme")).toBe("system");
+    expect(window.localStorage.getItem("machina.theme")).toBe("system");
     expect(screen.getByRole("button", { name: "system" })).toHaveAttribute("aria-pressed", "true");
     expect(document.documentElement).toHaveClass("dark");
   });
