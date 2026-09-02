@@ -207,7 +207,7 @@ describe("DocsPage", () => {
     });
     expect(link).toHaveAttribute(
       "href",
-      "https://github.com/Agentpay-Org/Agentpay-frontend/blob/main/docs/api-integration.md",
+      "https://github.com/stellar-machina/machina_frontend/blob/main/docs/api-integration.md",
     );
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
@@ -248,7 +248,7 @@ describe("DocsPage", () => {
       safeHrefSpy.mockImplementation((href) => {
         if (
           href ===
-          "https://github.com/Agentpay-Org/Agentpay-frontend/blob/main/docs/api-integration.md"
+          "https://github.com/stellar-machina/machina_frontend/blob/main/docs/api-integration.md"
         ) {
           return { ok: false };
         }
