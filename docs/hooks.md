@@ -189,7 +189,7 @@ Minimal real usage, based on `src/lib/__tests__/useLocalState.test.tsx`:
 import { useLocalState } from "@/lib/useLocalState";
 
 export function PersistedPreference() {
-  const [mode, setMode] = useLocalState("agentpay.docs.mode", "summary");
+  const [mode, setMode] = useLocalState("machina.docs.mode", "summary");
 
   return (
     <button type="button" onClick={() => setMode("detailed")}>

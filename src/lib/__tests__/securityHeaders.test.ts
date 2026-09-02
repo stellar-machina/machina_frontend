@@ -128,10 +128,10 @@ describe("defaultSecurityHeaders", () => {
 
   it("derives the CSP connect-src from the api base", () => {
     const headers = defaultSecurityHeaders({
-      apiBase: "https://api.staging.agentpay.io/v2",
+      apiBase: "https://api.staging.example.com/v2",
     });
     expect(headers["Content-Security-Policy"]).toContain(
-      "connect-src 'self' https://api.staging.agentpay.io"
+      "connect-src 'self' https://api.staging.example.com"
     );
   });
 });

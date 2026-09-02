@@ -82,11 +82,11 @@ describe("DocsPage", () => {
   });
 
   it("uses a custom API base URL when NEXT_PUBLIC_MACHINA_API_BASE is set", () => {
-    process.env.NEXT_PUBLIC_MACHINA_API_BASE = "https://api.agentpay.io";
+    process.env.NEXT_PUBLIC_MACHINA_API_BASE = "https://api.example.com";
     render(<DocsPage />);
     const codes = document.querySelectorAll("pre code");
     codes.forEach((code) => {
-      expect(code!.textContent).toContain("https://api.agentpay.io");
+      expect(code!.textContent).toContain("https://api.example.com");
     });
   });
 
