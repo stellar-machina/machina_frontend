@@ -29,6 +29,37 @@ below is a real page in `src/app`:
 
 ---
 
+## Route map (frontend)
+
+The complete set of App Router pages, each with its concrete path. Dynamic
+segments are written the way the route reads in the browser (`:agent`,
+`:serviceId`); on disk they are the folders `[agent]` and `[serviceId]`.
+
+| Path | Page |
+| --- | --- |
+| `/` | Overview / dashboard home |
+| `/stats` | Headline protocol counters |
+| `/services` | Registered metered services |
+| `/services/new` | Register a new service |
+| `/services/:serviceId` | Service detail |
+| `/services/:serviceId/edit` | Edit a service |
+| `/services/:serviceId/agents` | Agents consuming a service |
+| `/agents` | All calling agents |
+| `/agents/:agent` | Agent detail and consumption |
+| `/api-keys` | Issue, rotate, and revoke API keys |
+| `/usage` | Unsettled usage counters |
+| `/events` | On-chain settlement events |
+| `/export` | Export usage and settlement records |
+| `/admin` | Pause controls and admin actions |
+| `/settings` | Dashboard configuration |
+| `/webhooks` | Outbound notification endpoints |
+| `/search` | Find services and agents |
+| `/docs` | In-app API reference |
+| `/changelog` | Release notes |
+| `/about` | About the project |
+
+---
+
 ## How it's built
 
 The app leans on React Server Components for the page shells and a thin,
