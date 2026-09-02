@@ -1,9 +1,10 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import Link from "next/link";
 import { apiGet } from "@/lib/apiClient";
 import { useApi } from "@/lib/useApi";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { formatRequests } from "@/lib/format";
 
 type Usage = { agent: string; items: { serviceId: string; total: number }[] };
 type TotalState = { agent: string; total: number } | null;
